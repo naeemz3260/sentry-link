@@ -1,0 +1,15 @@
+{
+  "_comment": "Small local sample dataset used ONLY for demo/testing of the reputation channel, as permitted by the assignment ('tested with legitimate, suspicious, and known-safe sample URLs in a controlled and ethical manner'). Replace with a live threat-intel API (Google Safe Browsing, PhishTank, VirusTotal) for real-world use.",
+  "domains": [
+    "sentrylink-demo-phish.test",
+    "paypa1-secure-login.test",
+    "verify-account-update.test"
+  ],
+  "trusted": [
+    "google.com",
+    "microsoft.com",
+    "apple.com",
+    "wikipedia.org",
+    "github.com"
+  ]
+}

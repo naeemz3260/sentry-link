@@ -1,0 +1,67 @@
+{
+  "dataset": "GregaVrbancic/Phishing-Dataset (dataset_small.csv)",
+  "dataset_citation": "Vrbancic et al., Data in Brief, Vol. 33, 2020, DOI: 10.1016/j.dib.2020.106438",
+  "total_rows": 58645,
+  "train_rows": 46916,
+  "test_rows": 11729,
+  "features_used": [
+    "qty_dot_url",
+    "qty_hyphen_url",
+    "qty_underline_url",
+    "qty_slash_url",
+    "qty_questionmark_url",
+    "qty_equal_url",
+    "qty_at_url",
+    "qty_and_url",
+    "qty_exclamation_url",
+    "length_url",
+    "qty_tld_url",
+    "domain_length",
+    "qty_hyphen_domain",
+    "qty_vowels_domain",
+    "domain_in_ip",
+    "time_domain_activation",
+    "qty_redirects",
+    "tls_ssl_certificate",
+    "email_in_url",
+    "url_shortened"
+  ],
+  "model": "RandomForestClassifier(n_estimators=200, max_depth=14, min_samples_leaf=3, class_weight='balanced')",
+  "accuracy": 0.9234,
+  "precision": 0.9278,
+  "recall": 0.9253,
+  "f1_score": 0.9266,
+  "roc_auc": 0.9794,
+  "confusion_matrix": [
+    [
+      5159,
+      441
+    ],
+    [
+      458,
+      5671
+    ]
+  ],
+  "feature_importances": {
+    "qty_slash_url": 0.3298,
+    "length_url": 0.2472,
+    "time_domain_activation": 0.1747,
+    "domain_length": 0.0416,
+    "qty_equal_url": 0.0331,
+    "qty_hyphen_url": 0.0326,
+    "qty_dot_url": 0.0298,
+    "qty_vowels_domain": 0.0272,
+    "qty_redirects": 0.0219,
+    "qty_underline_url": 0.0151,
+    "tls_ssl_certificate": 0.0117,
+    "qty_tld_url": 0.0097,
+    "url_shortened": 0.009,
+    "qty_and_url": 0.0067,
+    "qty_hyphen_domain": 0.0055,
+    "qty_at_url": 0.0021,
+    "email_in_url": 0.0013,
+    "domain_in_ip": 0.0007,
+    "qty_exclamation_url": 0.0003,
+    "qty_questionmark_url": 0.0001
+  }
+}

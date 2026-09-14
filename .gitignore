@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+.env
+sentrylink.db
+*.db
+.DS_Store
+*.log
+
+# Keep the trained model + feature list + metrics, but the raw training
+# CSV is large and only needed to *retrain* — safe to skip in git.
+ml/dataset_small.csv

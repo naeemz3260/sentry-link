@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SentryLink — URL Security &amp; Phishing Detection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="scanline" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◈</span>
+    <span class="brand-name">SentryLink</span>
+  </div>
+  <nav class="topnav">
+    <button class="nav-link active" data-view="scan">Scan</button>
+    <button class="nav-link" data-view="history">History</button>
+  </nav>
+</header>
+
+<main>
+
+  <section id="view-scan" class="view active">
+    <div class="hero">
+      <p class="hero-eyebrow">URL Security &amp; Phishing Detection System</p>
+      <h1 class="hero-title">Paste a link.<br>See what it's really made of.</h1>
+      <p class="hero-sub">Eleven independent checks — structure, encryption, domain history, a trained ML model, and more — distilled into one transparent score.</p>
+
+      <form id="scan-form" class="scan-bar" autocomplete="off">
+        <span class="prompt-caret">&gt;_</span>
+        <input
+          id="url-input"
+          type="text"
+          placeholder="https://example.com or paste any link"
+          spellcheck="false"
+          required
+        />
+        <button type="submit" id="scan-btn">
+          <span class="btn-label">Inspect</span>
+        </button>
+      </form>
+      <p class="hero-hint" id="scan-hint">Try it on a link you already trust, then try one you're unsure about.</p>
+    </div>
+
+    <div id="loading" class="loading hidden">
+      <div class="pulse-track"><div class="pulse-dot"></div></div>
+      <p id="loading-text">Validating URL syntax…</p>
+    </div>
+
+    <div id="error-box" class="error-box hidden"></div>
+
+    <section id="results" class="results hidden">
+
+      <div class="result-top">
+        <div class="score-panel">
+          <div class="gauge-wrap">
+            <svg viewBox="0 0 140 140" class="gauge">
+              <circle cx="70" cy="70" r="60" class="gauge-track"></circle>
+              <circle cx="70" cy="70" r="60" class="gauge-fill" id="gauge-fill"></circle>
+            </svg>
+            <div class="gauge-center">
+              <span id="score-number" class="score-number">0</span>
+              <span class="score-max">/100</span>
+            </div>
+          </div>
+          <div class="score-meta">
+            <div class="grade-row">
+              <span id="grade-badge" class="grade-badge">—</span>
+              <span id="classification-pill" class="classification-pill">—</span>
+            </div>
+            <p id="tagline" class="tagline">—</p>
+          </div>
+        </div>
+
+        <div class="url-meta">
+          <div class="url-meta-row">
+            <span class="url-meta-label">Submitted</span>
+            <span id="meta-submitted" class="url-meta-value">—</span>
+          </div>
+          <div class="url-meta-row">
+            <span class="url-meta-label">Final URL</span>
+            <span id="meta-final" class="url-meta-value">—</span>
+          </div>
+          <div class="url-meta-row">
+            <span class="url-meta-label">Channels evaluated</span>
+            <span id="meta-channels" class="url-meta-value">—</span>
+          </div>
+          <div class="url-meta-row">
+            <span class="url-meta-label">Scan time</span>
+            <span id="meta-time" class="url-meta-value">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-body">
+        <div class="channels-panel">
+          <h2 class="panel-title">Detailed findings</h2>
+          <div id="channels-list" class="channels-list"></div>
+        </div>
+
+        <div class="recs-panel">
+          <h2 class="panel-title">Recommendations</h2>
+          <ul id="recs-list" class="recs-list"></ul>
+          <button id="export-btn" class="export-btn">Export report (.json)</button>
+        </div>
+      </div>
+
+    </section>
+  </section>
+
+  <section id="view-history" class="view">
+    <div class="history-header">
+      <h1 class="section-title">Scan history</h1>
+      <button id="clear-history-btn" class="ghost-btn">Clear all</button>
+    </div>
+    <div id="history-empty" class="empty-state hidden">
+      <p>No scans yet. Inspect a URL to see it appear here.</p>
+    </div>
+    <table id="history-table" class="history-table hidden">
+      <thead>
+        <tr>
+          <th>URL</th>
+          <th>Score</th>
+          <th>Grade</th>
+          <th>Classification</th>
+          <th>Scanned</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="history-body"></tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>SentryLink is an educational security-assessment tool. Scores are heuristic, not a legal or absolute guarantee of safety.</p>
+</footer>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
